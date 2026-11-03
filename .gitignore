@@ -1,0 +1,11 @@
+.DS_Store
+.claude/
+node_modules/
+*.log
+*.zip
+*.crx
+*.pem
+.env
+.env.*
+!.env.example
+scan-output/

@@ -1,0 +1,16 @@
+{
+  "name": "kb-stack-detector",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chrome extension that detects the knowledge base, docs, and support stack behind a site.",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\"",
+    "scan": "node scripts/scan.mjs",
+    "validate": "node scripts/validate-manifest.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

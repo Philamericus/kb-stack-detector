@@ -1,0 +1,2220 @@
+{
+  "categories": {
+    "kb": {
+      "name": "Knowledge base platform"
+    },
+    "ai-search": {
+      "name": "AI & search"
+    },
+    "chat": {
+      "name": "Chat & ticketing"
+    },
+    "hosting": {
+      "name": "Hosting & delivery"
+    },
+    "framework": {
+      "name": "Frameworks"
+    },
+    "analytics": {
+      "name": "Analytics & feedback"
+    }
+  },
+  "technologies": [
+    {
+      "id": "zendesk-guide",
+      "name": "Zendesk Guide",
+      "category": "kb",
+      "website": "https://www.zendesk.com/service/help-center/",
+      "patterns": {
+        "cname": [
+          "\\.zendesk\\.com$"
+        ],
+        "headers": {
+          "zendesk-service": "help-center",
+          "x-zendesk-origin-server": ""
+        },
+        "scriptSrc": [
+          "static\\.zdassets\\.com/hc/",
+          "/hc/theming_assets/"
+        ],
+        "jsGlobals": [
+          {
+            "pattern": "HelpCenter",
+            "weight": 60
+          }
+        ],
+        "html": [
+          "class=\"powered-by-zendesk\"",
+          "/hc/theming_assets/"
+        ],
+        "cookies": [
+          "^_help_center_session$"
+        ],
+        "url": [
+          "/hc/(?:[a-z]{2}(?:-[a-z]{2,4})?/)?(?:articles|categories|sections|requests)?"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "intercom-articles",
+      "name": "Intercom Articles",
+      "category": "kb",
+      "website": "https://www.intercom.com/help-desk/knowledge-base",
+      "patterns": {
+        "cname": [
+          "\\.intercomhelpcenter\\.com$",
+          "\\.intercom\\.help$"
+        ],
+        "scriptSrc": [
+          {
+            "pattern": "static\\.intercomassets\\.com/_next/static/chunks/pages/%5BhelpCenterIdentifier%5D",
+            "weight": 90
+          }
+        ],
+        "headers": {
+          "x-intercom-version": {
+            "pattern": "",
+            "weight": 40
+          }
+        },
+        "html": [
+          "data-testid=\"docs-home-collection-card\"",
+          "data-hc-section=\"collection-card\""
+        ],
+        "url": [
+          "^https?://intercom\\.help/"
+        ]
+      },
+      "implies": [
+        "nextjs"
+      ]
+    },
+    {
+      "id": "freshdesk",
+      "name": "Freshdesk",
+      "category": "kb",
+      "website": "https://www.freshworks.com/freshdesk/",
+      "patterns": {
+        "cname": [
+          "\\.freshdesk\\.com$"
+        ],
+        "scriptSrc": [
+          {
+            "pattern": "/assets/cdn/portal/scripts/(?:head|bottom|nonce)\\.js",
+            "weight": 50
+          }
+        ],
+        "html": [
+          {
+            "pattern": "freshworks\\.com/freshdesk/\\?utm_source=portal",
+            "weight": 60
+          },
+          {
+            "pattern": "cdn\\.freshdesk\\.com/data/helpdesk/attachments",
+            "weight": 40
+          }
+        ],
+        "cookies": [
+          "^_helpkit_session$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "freshservice",
+      "name": "Freshservice",
+      "category": "kb",
+      "website": "https://www.freshworks.com/freshservice/",
+      "patterns": {
+        "cname": [
+          "\\.freshservice\\.com$"
+        ],
+        "url": [
+          {
+            "pattern": "^https?://[^/]+\\.freshservice\\.com/",
+            "weight": 100
+          }
+        ],
+        "html": [
+          {
+            "pattern": "freshworks\\.com/freshservice/\\?utm_source=portal",
+            "weight": 60
+          }
+        ]
+      },
+      "excludes": [
+        "freshdesk"
+      ],
+      "implies": []
+    },
+    {
+      "id": "helpscout-docs",
+      "name": "Help Scout Docs",
+      "category": "kb",
+      "website": "https://www.helpscout.com/knowledge-base/",
+      "patterns": {
+        "cname": [
+          "\\.helpscoutdocs\\.com$"
+        ],
+        "scriptSrc": [
+          {
+            "pattern": "d3eto7onm69fcz\\.cloudfront\\.net/assets/javascripts/",
+            "weight": 70
+          }
+        ],
+        "html": [
+          {
+            "pattern": "id=\"serp-dd\"",
+            "weight": 30
+          },
+          {
+            "pattern": "id=\"docsSearch\"",
+            "weight": 30
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "document360",
+      "name": "Document360",
+      "category": "kb",
+      "website": "https://document360.com/",
+      "patterns": {
+        "cname": [
+          "\\.document360\\.io$"
+        ],
+        "scriptSrc": [
+          "cdn(?:\\.[a-z]{2})?\\.document360\\.io/"
+        ],
+        "html": [
+          "data-d360-ssr-integration",
+          "<d360-[a-z-]+"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "gitbook",
+      "name": "GitBook",
+      "category": "kb",
+      "website": "https://www.gitbook.com/",
+      "patterns": {
+        "cname": [
+          "\\.gitbook\\.io$",
+          "^hosting\\.gitbook\\.(?:io|com)$"
+        ],
+        "meta": {
+          "generator": "^GitBook"
+        },
+        "headers": {
+          "x-gitbook-route-site": "",
+          "x-gitbook-route-type": ""
+        },
+        "scriptSrc": [
+          "static-\\d+v\\.gitbook\\.com/"
+        ]
+      },
+      "implies": [
+        "nextjs"
+      ]
+    },
+    {
+      "id": "mintlify",
+      "name": "Mintlify",
+      "category": "kb",
+      "website": "https://mintlify.com/",
+      "patterns": {
+        "cname": [
+          "\\.mintlify\\.(?:dev|app|builders)$"
+        ],
+        "meta": {
+          "generator": "^Mintlify"
+        },
+        "headers": {
+          "x-mintlify-client-version": "",
+          "x-mint-proxy-version": ""
+        },
+        "scriptSrc": [
+          "/(?:_mintlify|mintlify-assets)/"
+        ],
+        "assets": [
+          "mintcdn\\.com/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "readme",
+      "name": "ReadMe",
+      "category": "kb",
+      "website": "https://readme.com/",
+      "patterns": {
+        "cname": [
+          "^ssl\\.readmessl\\.com$",
+          "\\.readme\\.io$"
+        ],
+        "scriptSrc": [
+          "cdn\\.readme\\.io/public/hub/"
+        ],
+        "html": [
+          "class=\"[^\"]*\\brm-(?:Sidebar|Header|SearchToggle)"
+        ]
+      },
+      "implies": [
+        "react"
+      ]
+    },
+    {
+      "id": "docusaurus",
+      "name": "Docusaurus",
+      "category": "kb",
+      "website": "https://docusaurus.io/",
+      "patterns": {
+        "meta": {
+          "generator": "^Docusaurus"
+        },
+        "jsGlobals": [
+          "__docusaurus"
+        ],
+        "html": [
+          "id=\"__docusaurus\"",
+          "__docusaurus_skipToContent_fallback"
+        ]
+      },
+      "implies": [
+        "react"
+      ]
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "category": "kb",
+      "website": "https://www.notion.com/",
+      "patterns": {
+        "cname": [
+          "\\.notion\\.site$",
+          "^external\\.notion\\.site$"
+        ],
+        "html": [
+          {
+            "pattern": "id=\"notion-app\"",
+            "weight": 80
+          },
+          {
+            "pattern": "class=\"notion-html\"",
+            "weight": 40
+          },
+          {
+            "pattern": "class=\"[^\"]*\\bnotion-(?:page|text|semantic-string|collection-card)\\b",
+            "weight": 40
+          }
+        ],
+        "jsGlobals": [
+          "__notion_html_async"
+        ],
+        "url": [
+          "\\.notion\\.site/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "super",
+      "name": "Super (Notion sites)",
+      "category": "kb",
+      "website": "https://super.so/",
+      "patterns": {
+        "meta": {
+          "generator": "^Super$"
+        },
+        "assets": [
+          "superso\\.b-cdn\\.net/"
+        ],
+        "scriptSrc": [
+          "superso\\.b-cdn\\.net/"
+        ],
+        "cname": [
+          "\\.super\\.so$"
+        ]
+      },
+      "excludes": [
+        "notion"
+      ],
+      "implies": []
+    },
+    {
+      "id": "confluence",
+      "name": "Confluence",
+      "category": "kb",
+      "website": "https://www.atlassian.com/software/confluence",
+      "patterns": {
+        "headers": {
+          "x-confluence-request-time": ""
+        },
+        "html": [
+          "id=\"com-atlassian-confluence\"",
+          "id=\"confluence-base-url\"",
+          "aui-header-logo-confluence"
+        ],
+        "meta": {
+          "ajs-version-number": ""
+        },
+        "url": [
+          "\\.atlassian\\.net/wiki/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "hubspot-kb",
+      "name": "HubSpot Knowledge Base",
+      "category": "kb",
+      "website": "https://www.hubspot.com/products/service/knowledge-base",
+      "patterns": {
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\bhs-kb-[a-z-]",
+            "weight": 80
+          },
+          {
+            "pattern": "class=\"[^\"]*\\bkb--header-nav",
+            "weight": 60
+          },
+          {
+            "pattern": "class=\"[^\"]*\\bkb-(?:body-wrapper|list__item|article-wrapper|sidebar)\\b",
+            "weight": 40
+          }
+        ]
+      },
+      "implies": [
+        "hubspot-cms"
+      ]
+    },
+    {
+      "id": "salesforce",
+      "name": "Salesforce Experience Cloud",
+      "category": "kb",
+      "website": "https://www.salesforce.com/products/experience-cloud/",
+      "patterns": {
+        "cname": [
+          "\\.siteforce\\.com$",
+          "\\.force\\.com$",
+          "\\.my\\.site\\.com$"
+        ],
+        "scriptSrc": [
+          "/s/sfsites/",
+          "siteforce%3AcommunityApp"
+        ],
+        "headers": {
+          "x-sfdc-trace-flags": "",
+          "x-sfdc-request-id": "",
+          "server": "^sfdcedge$"
+        },
+        "url": [
+          "\\.my\\.site\\.com/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "servicenow",
+      "name": "ServiceNow",
+      "category": "kb",
+      "website": "https://www.servicenow.com/",
+      "patterns": {
+        "cname": [
+          "\\.service-now\\.com$",
+          "\\.servicenowservices\\.com$"
+        ],
+        "html": [
+          "window\\.snWebaConfig",
+          "id=\"sp-main-wrapper\"",
+          "sp_formfield_"
+        ],
+        "jsGlobals": [
+          "NOW",
+          "g_ck"
+        ],
+        "url": [
+          "\\.service-now\\.com/",
+          "[?&]id=kb_article"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "helpjuice",
+      "name": "Helpjuice",
+      "category": "kb",
+      "website": "https://helpjuice.com/",
+      "patterns": {
+        "cname": [
+          "\\.helpjuice\\.com$"
+        ],
+        "scriptSrc": [
+          "static\\.helpjuice\\.com/assets/"
+        ],
+        "assets": [
+          "helpjuice-static\\.s3\\.amazonaws\\.com/"
+        ],
+        "html": [
+          "data-helpjuice-(?:component|element)="
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "knowledgeowl",
+      "name": "KnowledgeOwl",
+      "category": "kb",
+      "website": "https://www.knowledgeowl.com/",
+      "patterns": {
+        "cname": [
+          "\\.knowledgeowl\\.com$"
+        ],
+        "html": [
+          {
+            "pattern": "id=\"ko-documentation-categories\"",
+            "weight": 60
+          },
+          {
+            "pattern": "reporting-production\\.knowledgeowl\\.com",
+            "weight": 50
+          }
+        ],
+        "scriptSrc": [
+          {
+            "pattern": "/min/js/kbJquery",
+            "weight": 30
+          }
+        ],
+        "jsGlobals": [
+          "KnowledgeOwlChatbot"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "helpdocs",
+      "name": "HelpDocs",
+      "category": "kb",
+      "website": "https://www.helpdocs.io/",
+      "patterns": {
+        "cname": [
+          "\\.helpdocs\\.io$",
+          "\\.helpdocs\\.com$"
+        ],
+        "scriptSrc": [
+          "cdn\\.helpdocs\\.io/"
+        ],
+        "assets": [
+          "cdn\\.helpdocs\\.io/"
+        ],
+        "jsGlobals": [
+          "HDUtils",
+          "hd_util_params"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "archbee",
+      "name": "Archbee",
+      "category": "kb",
+      "website": "https://www.archbee.com/",
+      "patterns": {
+        "cname": [
+          "\\.archbee\\.com$"
+        ],
+        "scriptSrc": [
+          "cdn\\.archbee\\.com/"
+        ],
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\bab-(?:tree-navigation-link|plugin-wrapper|nav-left)",
+            "weight": 50
+          }
+        ]
+      },
+      "implies": [
+        "nextjs"
+      ]
+    },
+    {
+      "id": "nextra",
+      "name": "Nextra",
+      "category": "kb",
+      "website": "https://nextra.site/",
+      "patterns": {
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\bnextra-(?:content|banner|focus|bg|border|nav-container|sidebar)",
+            "weight": 70
+          },
+          {
+            "pattern": "--nextra-primary-hue",
+            "weight": 50
+          }
+        ]
+      },
+      "implies": [
+        "nextjs"
+      ]
+    },
+    {
+      "id": "vitepress",
+      "name": "VitePress",
+      "category": "kb",
+      "website": "https://vitepress.dev/",
+      "patterns": {
+        "meta": {
+          "generator": "^VitePress"
+        },
+        "html": [
+          "class=\"VP(?:Link|Nav|Content|Doc|MenuLink|Button)\\b"
+        ],
+        "jsGlobals": [
+          "__VP_HASH_MAP__"
+        ]
+      },
+      "implies": [
+        "vue"
+      ]
+    },
+    {
+      "id": "mkdocs",
+      "name": "MkDocs",
+      "category": "kb",
+      "website": "https://www.mkdocs.org/",
+      "patterns": {
+        "meta": {
+          "generator": "^mkdocs-"
+        }
+      },
+      "implies": []
+    },
+    {
+      "id": "mkdocs-material",
+      "name": "Material for MkDocs",
+      "category": "kb",
+      "website": "https://squidfunk.github.io/mkdocs-material/",
+      "patterns": {
+        "meta": {
+          "generator": "mkdocs-material-"
+        },
+        "html": [
+          "class=\"md-(?:header|nav|content|footer)\\b"
+        ]
+      },
+      "implies": [
+        "mkdocs"
+      ]
+    },
+    {
+      "id": "readthedocs",
+      "name": "Read the Docs",
+      "category": "kb",
+      "website": "https://about.readthedocs.com/",
+      "patterns": {
+        "cname": [
+          "(?:^|\\.)readthedocs\\.(?:io|com|org)$"
+        ],
+        "headers": {
+          "x-rtd-project": "",
+          "x-rtd-domain": ""
+        },
+        "meta": {
+          "readthedocs-project-slug": "",
+          "readthedocs-addons-api-version": ""
+        },
+        "scriptSrc": [
+          "readthedocs-addons\\.js",
+          "readthedocs-doc-embed\\.js"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "fern",
+      "name": "Fern",
+      "category": "kb",
+      "website": "https://buildwithfern.com/",
+      "patterns": {
+        "cname": [
+          "\\.ferndocs\\.com$",
+          "\\.docs\\.buildwithfern\\.com$"
+        ],
+        "headers": {
+          "x-fern-renderer": ""
+        },
+        "html": [
+          "class=\"[^\"]*\\bfern-(?:mdx-link|button|docs)",
+          "id=\"fern-docs\""
+        ],
+        "jsGlobals": [
+          "__fernDeferredModules"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "redocly",
+      "name": "Redocly",
+      "category": "kb",
+      "website": "https://redocly.com/",
+      "patterns": {
+        "cname": [
+          "\\.redoc\\.ly$",
+          "\\.redocly\\.app$"
+        ],
+        "html": [
+          {
+            "pattern": "--ai-assistant-button-redocly-icon-color",
+            "weight": 60
+          },
+          {
+            "pattern": "window\\.__onRouteChangeHooks",
+            "weight": 30
+          }
+        ],
+        "scriptSrc": [
+          "cdn\\.redoc\\.ly/",
+          "/redoc\\.standalone\\.js"
+        ],
+        "jsGlobals": [
+          "Redoc"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "stoplight",
+      "name": "Stoplight",
+      "category": "kb",
+      "website": "https://stoplight.io/",
+      "patterns": {
+        "cname": [
+          "\\.stoplight\\.io$"
+        ],
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\bsl-(?:flex|bg-canvas|font-ui)\\b",
+            "weight": 40
+          },
+          {
+            "pattern": "id=\"mosaic-provider",
+            "weight": 40
+          }
+        ],
+        "scriptSrc": [
+          "@stoplight/elements"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "crisp-helpdesk",
+      "name": "Crisp Helpdesk",
+      "category": "kb",
+      "website": "https://crisp.chat/en/knowledge/",
+      "patterns": {
+        "cname": [
+          "\\.crisp\\.help$"
+        ],
+        "headers": {
+          "x-crisp-ray": ""
+        },
+        "assets": [
+          "static\\.crisp\\.help/"
+        ],
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\bcsh-(?:wrapper|header-main|home-list)",
+            "weight": 50
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "gorgias-helpcenter",
+      "name": "Gorgias Help Center",
+      "category": "kb",
+      "website": "https://www.gorgias.com/",
+      "patterns": {
+        "cname": [
+          "\\.gorgias\\.help$"
+        ],
+        "scriptSrc": [
+          {
+            "pattern": "assets\\.gorgias\\.help/",
+            "weight": 90
+          }
+        ],
+        "assets": [
+          "assets\\.gorgias\\.help/"
+        ],
+        "url": [
+          "\\.gorgias\\.help/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "kustomer-kb",
+      "name": "Kustomer Knowledge Base",
+      "category": "kb",
+      "website": "https://www.kustomer.com/",
+      "patterns": {
+        "cname": [
+          "\\.kustomer\\.help$",
+          "\\.kb\\.kustomerapp\\.com$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "front-kb",
+      "name": "Front Knowledge Base",
+      "category": "kb",
+      "website": "https://front.com/",
+      "patterns": {
+        "cname": [
+          "\\.frontkb\\.com$"
+        ],
+        "scriptSrc": [
+          "assets\\.frontapp\\.com/knowledge-base/"
+        ],
+        "assets": [
+          "assets\\.frontapp\\.com/knowledge-base/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "helply",
+      "name": "Helply / Groove Docs",
+      "category": "kb",
+      "website": "https://helply.com/",
+      "patterns": {
+        "cname": [
+          "\\.helplydocs\\.com$"
+        ],
+        "headers": {
+          "x-kb-edge": {
+            "pattern": "",
+            "weight": 40
+          }
+        },
+        "html": [
+          {
+            "pattern": "cdn\\.helply\\.com/kb-assets/",
+            "weight": 60
+          },
+          {
+            "pattern": "class=\"[^\"]*\\bkb-hc-(?:hero|mcard)",
+            "weight": 30
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "groove-kb",
+      "name": "Groove Knowledge Base",
+      "category": "kb",
+      "website": "https://www.groovehq.com/",
+      "patterns": {
+        "cname": [
+          "\\.groovehq\\.com$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "zoho-desk",
+      "name": "Zoho Desk",
+      "category": "kb",
+      "website": "https://www.zoho.com/desk/",
+      "patterns": {
+        "cname": [
+          "\\.zohodesk\\.(?:com|eu|in|com\\.au)$",
+          "helpcenter\\.cs\\.zohohost\\."
+        ],
+        "scriptSrc": [
+          "static\\.zohocdn\\.com/helpcenter/",
+          "/portal/hccustomize/"
+        ],
+        "html": [
+          {
+            "pattern": "id=\"portal_html\"",
+            "weight": 30
+          }
+        ],
+        "url": [
+          "/portal/[a-z]{2}(?:-[a-z]{2})?/(?:home|kb)"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "bettermode",
+      "name": "Bettermode",
+      "category": "kb",
+      "website": "https://bettermode.com/",
+      "patterns": {
+        "cname": [
+          "\\.bettermode\\.io$",
+          "\\.tribeplatform\\.com$"
+        ],
+        "headers": {
+          "x-bettermode-ui-version": ""
+        },
+        "scriptSrc": [
+          "app\\.t-assets\\.net/neo/"
+        ],
+        "assets": [
+          "app\\.t-assets\\.net/neo/"
+        ],
+        "html": [
+          {
+            "pattern": "tribe-s3-production\\.imgix\\.net",
+            "weight": 30
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "discourse",
+      "name": "Discourse",
+      "category": "kb",
+      "website": "https://www.discourse.org/",
+      "patterns": {
+        "cname": [
+          "\\.hosted-by-discourse\\.com$"
+        ],
+        "meta": {
+          "generator": "^Discourse"
+        },
+        "headers": {
+          "x-discourse-route": ""
+        },
+        "assets": [
+          "discourse-cdn\\.com/"
+        ],
+        "jsGlobals": [
+          "Discourse"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "guru",
+      "name": "Guru",
+      "category": "kb",
+      "website": "https://www.getguru.com/",
+      "patterns": {
+        "url": [
+          "^https://app\\.getguru\\.com/(?:card|public|pages)/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "algolia-docsearch",
+      "name": "Algolia DocSearch",
+      "category": "ai-search",
+      "website": "https://docsearch.algolia.com/",
+      "patterns": {
+        "scriptSrc": [
+          "@docsearch/js",
+          "docsearch(?:\\.min)?\\.js"
+        ],
+        "assets": [
+          "@docsearch/css"
+        ],
+        "html": [
+          "class=\"DocSearch(?: |-Button\\b|\")",
+          "class=\"[^\"]*\\bDocSearch-Button\\b"
+        ],
+        "dom": [
+          ".DocSearch-Button"
+        ],
+        "jsGlobals": [
+          "docsearch"
+        ]
+      },
+      "implies": [
+        "algolia"
+      ]
+    },
+    {
+      "id": "algolia",
+      "name": "Algolia",
+      "category": "ai-search",
+      "website": "https://www.algolia.com/",
+      "patterns": {
+        "resourceHosts": [
+          "(?:^|\\.)algolia(?:net)?\\.(?:net|com|io)$",
+          "-dsn\\.algolia\\.net$"
+        ],
+        "scriptSrc": [
+          "algoliasearch(?:@[\\d.]+)?/",
+          "algoliasearch(?:-lite)?(?:\\.umd)?(?:\\.min)?\\.js",
+          "instantsearch\\.js"
+        ],
+        "jsGlobals": [
+          "algoliasearch",
+          "instantsearch"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "inkeep",
+      "name": "Inkeep",
+      "category": "ai-search",
+      "website": "https://inkeep.com/",
+      "patterns": {
+        "scriptSrc": [
+          "@inkeep/",
+          "unpkg\\.com/@inkeep",
+          "cdn\\.inkeep\\.com/"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)inkeep\\.com$"
+        ],
+        "jsGlobals": [
+          "Inkeep"
+        ],
+        "html": [
+          {
+            "pattern": "<inkeep-[a-z-]+",
+            "weight": 60
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "kapa",
+      "name": "Kapa.ai",
+      "category": "ai-search",
+      "website": "https://www.kapa.ai/",
+      "patterns": {
+        "scriptSrc": [
+          "widget\\.kapa\\.ai/"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)kapa\\.ai$"
+        ],
+        "jsGlobals": [
+          "Kapa"
+        ],
+        "html": [
+          {
+            "pattern": "data-website-id=\"[0-9a-f-]{36}\"[^>]*data-project-name",
+            "weight": 40
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "mendable",
+      "name": "Mendable",
+      "category": "ai-search",
+      "website": "https://www.mendable.ai/",
+      "patterns": {
+        "scriptSrc": [
+          "@mendable/",
+          "mendable\\.ai/"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)mendable\\.ai$"
+        ],
+        "jsGlobals": [
+          "Mendable"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "markprompt",
+      "name": "Markprompt",
+      "category": "ai-search",
+      "website": "https://markprompt.com/",
+      "patterns": {
+        "scriptSrc": [
+          "@markprompt/"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)markprompt\\.com$"
+        ],
+        "jsGlobals": [
+          "markprompt"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "docsbot",
+      "name": "DocsBot",
+      "category": "ai-search",
+      "website": "https://docsbot.ai/",
+      "patterns": {
+        "scriptSrc": [
+          "docsbot\\.ai/"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)docsbot\\.ai$"
+        ],
+        "jsGlobals": [
+          "DocsBotAI"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "chatbase",
+      "name": "Chatbase",
+      "category": "ai-search",
+      "website": "https://www.chatbase.co/",
+      "patterns": {
+        "scriptSrc": [
+          "(?:www\\.)?chatbase\\.co/embed"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)chatbase\\.co$"
+        ],
+        "jsGlobals": [
+          "chatbase",
+          "embeddedChatbotConfig"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "gitbook-ai",
+      "name": "GitBook Assistant",
+      "category": "ai-search",
+      "website": "https://www.gitbook.com/",
+      "patterns": {
+        "html": [
+          {
+            "pattern": "gitbook-ai-assistant",
+            "weight": 50
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "mintlify-assistant",
+      "name": "Mintlify Assistant",
+      "category": "ai-search",
+      "website": "https://mintlify.com/",
+      "patterns": {
+        "html": [
+          {
+            "pattern": "id=\"(?:assistant-entry|chat-assistant)[^\"]*\"",
+            "weight": 50
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "ask-ai",
+      "name": "Ask AI widget (generic)",
+      "category": "ai-search",
+      "website": "",
+      "patterns": {
+        "html": [
+          {
+            "pattern": ">\\s*Ask (?:AI|Assistant)\\s*<",
+            "weight": 30
+          },
+          {
+            "pattern": "aria-label=\"Ask AI\"",
+            "weight": 30
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "typesense",
+      "name": "Typesense",
+      "category": "ai-search",
+      "website": "https://typesense.org/",
+      "patterns": {
+        "resourceHosts": [
+          "\\.typesense\\.net$",
+          "(?:^|\\.)typesense\\.org$"
+        ],
+        "scriptSrc": [
+          "typesense-docsearch",
+          "typesense-instantsearch-adapter",
+          "/typesense(?:\\.min)?\\.js"
+        ],
+        "jsGlobals": [
+          "Typesense"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "elastic",
+      "name": "Elastic (App/Site Search)",
+      "category": "ai-search",
+      "website": "https://www.elastic.co/enterprise-search",
+      "patterns": {
+        "resourceHosts": [
+          "\\.ent-search\\.[a-z0-9-]+\\.(?:aws|gcp|azure)\\.elastic-cloud\\.com$",
+          "\\.es\\.[a-z0-9-]+\\.(?:aws|gcp|azure)\\.(?:elastic-cloud|found)\\.(?:com|io)$"
+        ],
+        "scriptSrc": [
+          "@elastic/search-ui",
+          "@elastic/app-search-javascript"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "coveo",
+      "name": "Coveo",
+      "category": "ai-search",
+      "website": "https://www.coveo.com/",
+      "patterns": {
+        "scriptSrc": [
+          "static\\.cloud\\.coveo\\.com/",
+          "coveo-search-ui"
+        ],
+        "resourceHosts": [
+          "platform(?:-eu|-au|-ca)?\\.cloud\\.coveo\\.com$",
+          "\\.org\\.coveo\\.com$"
+        ],
+        "jsGlobals": [
+          "Coveo",
+          "CoveoAtomic"
+        ],
+        "html": [
+          {
+            "pattern": "<atomic-search-interface\\b",
+            "weight": 60
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "swiftype",
+      "name": "Swiftype",
+      "category": "ai-search",
+      "website": "https://swiftype.com/",
+      "patterns": {
+        "scriptSrc": [
+          "s\\.swiftypecdn\\.com/",
+          "swiftype\\.com/"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)swiftype(?:cdn)?\\.com$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "intercom-messenger",
+      "name": "Intercom Messenger",
+      "category": "chat",
+      "website": "https://www.intercom.com/",
+      "patterns": {
+        "scriptSrc": [
+          "widget\\.intercom\\.io/widget/",
+          "js\\.intercomcdn\\.com/"
+        ],
+        "resourceHosts": [
+          "^(?:widget|api-iam|nexus-websocket-a)\\.intercom\\.io$",
+          "^js\\.intercomcdn\\.com$"
+        ],
+        "jsGlobals": [
+          "Intercom",
+          "intercomSettings"
+        ],
+        "cookies": [
+          "^intercom-(?:id|session|device-id)-"
+        ],
+        "dom": [
+          "#intercom-container",
+          ".intercom-lightweight-app"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "zendesk-widget",
+      "name": "Zendesk Web Widget / Messaging",
+      "category": "chat",
+      "website": "https://www.zendesk.com/service/messaging/",
+      "patterns": {
+        "scriptSrc": [
+          "static\\.zdassets\\.com/ekr/snippet\\.js",
+          "zdassets\\.com/z2-sunco-widget/"
+        ],
+        "html": [
+          "id=\"ze-snippet\""
+        ],
+        "jsGlobals": [
+          "zE",
+          "zESettings",
+          "zEACLoaded"
+        ],
+        "dom": [
+          "#launcher[title*='messaging' i]",
+          "iframe#webWidget"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "drift",
+      "name": "Drift",
+      "category": "chat",
+      "website": "https://www.salesloft.com/platform/drift",
+      "patterns": {
+        "scriptSrc": [
+          "js\\.driftt\\.com/",
+          "js\\.drift\\.com/"
+        ],
+        "jsGlobals": [
+          "drift",
+          "driftt"
+        ],
+        "dom": [
+          "#drift-widget",
+          "#drift-frame-controller"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "freshchat",
+      "name": "Freshchat / Freshworks widget",
+      "category": "chat",
+      "website": "https://www.freshworks.com/live-chat-software/",
+      "patterns": {
+        "scriptSrc": [
+          "wchat\\.freshchat\\.com/",
+          "widget\\.freshworks\\.com/widgets/",
+          "\\.freshchat\\.com/js/widget\\.js"
+        ],
+        "jsGlobals": [
+          "fcWidget",
+          "FreshworksWidget",
+          "fwSettings"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "hubspot-chat",
+      "name": "HubSpot Chat",
+      "category": "chat",
+      "website": "https://www.hubspot.com/products/crm/live-chat",
+      "patterns": {
+        "scriptSrc": [
+          "js\\.usemessages\\.com/"
+        ],
+        "jsGlobals": [
+          "HubSpotConversations"
+        ],
+        "dom": [
+          "#hubspot-messages-iframe-container"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "crisp-chat",
+      "name": "Crisp Chat",
+      "category": "chat",
+      "website": "https://crisp.chat/",
+      "patterns": {
+        "scriptSrc": [
+          "client\\.crisp\\.chat/"
+        ],
+        "jsGlobals": [
+          "$crisp",
+          "CRISP_WEBSITE_ID"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "livechat",
+      "name": "LiveChat",
+      "category": "chat",
+      "website": "https://www.livechat.com/",
+      "patterns": {
+        "scriptSrc": [
+          "cdn\\.livechatinc\\.com/"
+        ],
+        "jsGlobals": [
+          "LiveChatWidget",
+          "__lc"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "tawk",
+      "name": "Tawk.to",
+      "category": "chat",
+      "website": "https://www.tawk.to/",
+      "patterns": {
+        "scriptSrc": [
+          "embed\\.tawk\\.to/"
+        ],
+        "jsGlobals": [
+          "Tawk_API"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "olark",
+      "name": "Olark",
+      "category": "chat",
+      "website": "https://www.olark.com/",
+      "patterns": {
+        "scriptSrc": [
+          "static\\.olark\\.com/"
+        ],
+        "jsGlobals": [
+          "olark"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "helpscout-beacon",
+      "name": "Help Scout Beacon",
+      "category": "chat",
+      "website": "https://www.helpscout.com/beacon/",
+      "patterns": {
+        "scriptSrc": [
+          "beacon-v2\\.helpscout\\.net"
+        ],
+        "html": [
+          {
+            "pattern": "beacon-v2\\.helpscout\\.net",
+            "weight": 60
+          }
+        ],
+        "jsGlobals": [
+          "Beacon"
+        ],
+        "dom": [
+          "#beacon-container"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "gorgias-chat",
+      "name": "Gorgias Chat",
+      "category": "chat",
+      "website": "https://www.gorgias.com/",
+      "patterns": {
+        "scriptSrc": [
+          "config\\.gorgias\\.chat/",
+          "client-builds\\.production\\.gorgias\\.chat/"
+        ],
+        "jsGlobals": [
+          "GorgiasChat"
+        ],
+        "dom": [
+          "#gorgias-chat-container"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "front-chat",
+      "name": "Front Chat",
+      "category": "chat",
+      "website": "https://front.com/",
+      "patterns": {
+        "scriptSrc": [
+          "chat-assets\\.frontapp\\.com/"
+        ],
+        "jsGlobals": [
+          "FrontChat"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "ticket-form",
+      "name": "Ticket submission form",
+      "category": "chat",
+      "website": "",
+      "patterns": {
+        "html": [
+          {
+            "pattern": "href=\"[^\"]*/hc/(?:[a-z-]+/)?requests/new",
+            "weight": 60
+          },
+          {
+            "pattern": "href=\"[^\"]*/support/tickets/new",
+            "weight": 60
+          },
+          {
+            "pattern": "href=\"[^\"]*/(?:submit-a-request|contact-support|new-ticket|support/new)(?:[/?#\"])",
+            "weight": 40
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "category": "hosting",
+      "website": "https://www.cloudflare.com/",
+      "patterns": {
+        "headers": {
+          "cf-ray": "",
+          "server": "^cloudflare$"
+        },
+        "cookies": [
+          "^__cf_bm$",
+          "^cf_clearance$",
+          "^__cfruid$"
+        ],
+        "cname": [
+          "\\.cdn\\.cloudflare\\.net$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "category": "hosting",
+      "website": "https://vercel.com/",
+      "patterns": {
+        "headers": {
+          "x-vercel-id": "",
+          "x-vercel-cache": "",
+          "server": "^Vercel$"
+        },
+        "cname": [
+          "(?:^|\\.)vercel-dns(?:-\\d+)?\\.com$",
+          "\\.vercel\\.app$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "netlify",
+      "name": "Netlify",
+      "category": "hosting",
+      "website": "https://www.netlify.com/",
+      "patterns": {
+        "headers": {
+          "x-nf-request-id": "",
+          "server": "^Netlify$",
+          "cache-status": "Netlify"
+        },
+        "cname": [
+          "\\.netlify\\.(?:app|com)$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "cloudfront",
+      "name": "AWS CloudFront",
+      "category": "hosting",
+      "website": "https://aws.amazon.com/cloudfront/",
+      "patterns": {
+        "headers": {
+          "x-amz-cf-id": "",
+          "via": "CloudFront",
+          "x-cache": "cloudfront"
+        },
+        "cname": [
+          "\\.cloudfront\\.net$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "fastly",
+      "name": "Fastly",
+      "category": "hosting",
+      "website": "https://www.fastly.com/",
+      "patterns": {
+        "headers": {
+          "x-served-by": "^cache-",
+          "x-fastly-request-id": "",
+          "fastly-debug-digest": ""
+        },
+        "cname": [
+          "\\.fastly(?:lb)?\\.net$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "akamai",
+      "name": "Akamai",
+      "category": "hosting",
+      "website": "https://www.akamai.com/",
+      "patterns": {
+        "headers": {
+          "server": "^AkamaiGHost",
+          "x-akamai-transformed": "",
+          "akamai-grn": ""
+        },
+        "cname": [
+          "\\.(?:akamaiedge|edgekey|edgesuite|akamaized)\\.net$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "github-pages",
+      "name": "GitHub Pages",
+      "category": "hosting",
+      "website": "https://pages.github.com/",
+      "patterns": {
+        "headers": {
+          "server": "^GitHub\\.com$",
+          "x-github-request-id": ""
+        },
+        "cname": [
+          "\\.github\\.io$"
+        ],
+        "url": [
+          "^https?://[^/]+\\.github\\.io/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "fly",
+      "name": "Fly.io",
+      "category": "hosting",
+      "website": "https://fly.io/",
+      "patterns": {
+        "headers": {
+          "fly-request-id": "",
+          "server": "^Fly/"
+        },
+        "cname": [
+          "\\.fly\\.dev$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "render",
+      "name": "Render",
+      "category": "hosting",
+      "website": "https://render.com/",
+      "patterns": {
+        "headers": {
+          "x-render-origin-server": "",
+          "rndr-id": ""
+        },
+        "cname": [
+          "\\.onrender\\.com$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "heroku",
+      "name": "Heroku",
+      "category": "hosting",
+      "website": "https://www.heroku.com/",
+      "patterns": {
+        "headers": {
+          "server": "^Heroku$"
+        },
+        "cname": [
+          "\\.herokudns\\.com$",
+          "\\.herokuapp\\.com$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "hubspot-cms",
+      "name": "HubSpot CMS",
+      "category": "hosting",
+      "website": "https://www.hubspot.com/products/cms",
+      "patterns": {
+        "headers": {
+          "x-hs-hub-id": "",
+          "x-hs-content-id": {
+            "pattern": "",
+            "weight": 30
+          }
+        },
+        "meta": {
+          "generator": "^HubSpot$"
+        },
+        "cname": [
+          "\\.sites\\.hubspot\\.net$",
+          "\\.hscoscdn\\d*\\.net$"
+        ],
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\bhs_cos_wrapper\\b",
+            "weight": 30
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "category": "framework",
+      "website": "https://nextjs.org/",
+      "patterns": {
+        "headers": {
+          "x-powered-by": "Next\\.js",
+          "x-nextjs-cache": "",
+          "x-nextjs-prerender": ""
+        },
+        "meta": {
+          "generator": "^Next\\.js"
+        },
+        "html": [
+          "id=\"__NEXT_DATA__\"",
+          "/_next/static/"
+        ],
+        "jsGlobals": [
+          "__NEXT_DATA__",
+          "next"
+        ]
+      },
+      "implies": [
+        "react"
+      ]
+    },
+    {
+      "id": "nuxt",
+      "name": "Nuxt",
+      "category": "framework",
+      "website": "https://nuxt.com/",
+      "patterns": {
+        "html": [
+          "/_nuxt/",
+          "id=\"__nuxt\"",
+          "window\\.__NUXT__"
+        ],
+        "jsGlobals": [
+          "__NUXT__",
+          "$nuxt",
+          "useNuxtApp"
+        ],
+        "meta": {
+          "generator": "^Nuxt"
+        }
+      },
+      "implies": [
+        "vue"
+      ]
+    },
+    {
+      "id": "gatsby",
+      "name": "Gatsby",
+      "category": "framework",
+      "website": "https://www.gatsbyjs.com/",
+      "patterns": {
+        "meta": {
+          "generator": "^Gatsby"
+        },
+        "html": [
+          "id=\"___gatsby\""
+        ],
+        "jsGlobals": [
+          "___gatsby"
+        ]
+      },
+      "implies": [
+        "react"
+      ]
+    },
+    {
+      "id": "astro",
+      "name": "Astro",
+      "category": "framework",
+      "website": "https://astro.build/",
+      "patterns": {
+        "meta": {
+          "generator": "^Astro"
+        },
+        "html": [
+          "<astro-island\\b",
+          "data-astro-cid-",
+          "/_astro/"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "framework",
+      "website": "https://react.dev/",
+      "patterns": {
+        "jsGlobals": [
+          "@react",
+          "React"
+        ],
+        "html": [
+          {
+            "pattern": "data-reactroot",
+            "weight": 50
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "vue",
+      "name": "Vue.js",
+      "category": "framework",
+      "website": "https://vuejs.org/",
+      "patterns": {
+        "jsGlobals": [
+          "@vue",
+          "__VUE__",
+          "Vue"
+        ],
+        "html": [
+          {
+            "pattern": "\\bdata-v-[0-9a-f]{8}\\b",
+            "weight": 50
+          },
+          {
+            "pattern": "\\bdata-server-rendered=\"true\"",
+            "weight": 40
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "svelte",
+      "name": "Svelte / SvelteKit",
+      "category": "framework",
+      "website": "https://svelte.dev/",
+      "patterns": {
+        "jsGlobals": [
+          "@svelte",
+          "__sveltekit_dev"
+        ],
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\bsvelte-[a-z0-9]{5,8}\\b",
+            "weight": 60
+          },
+          {
+            "pattern": "data-sveltekit-",
+            "weight": 60
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "angular",
+      "name": "Angular / AngularJS",
+      "category": "framework",
+      "website": "https://angular.dev/",
+      "patterns": {
+        "html": [
+          {
+            "pattern": "\\bng-version=\"",
+            "weight": 80
+          },
+          {
+            "pattern": "\\bng-app\\b",
+            "weight": 50
+          }
+        ],
+        "jsGlobals": [
+          "angular",
+          "ng"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "google-analytics",
+      "name": "Google Analytics",
+      "category": "analytics",
+      "website": "https://marketingplatform.google.com/about/analytics/",
+      "patterns": {
+        "scriptSrc": [
+          "googletagmanager\\.com/gtag/js",
+          "google-analytics\\.com/(?:ga|analytics)\\.js"
+        ],
+        "jsGlobals": [
+          "gtag",
+          {
+            "pattern": "ga",
+            "weight": 30
+          }
+        ],
+        "cookies": [
+          "^_ga(?:_[A-Z0-9]+)?$"
+        ],
+        "resourceHosts": [
+          "(?:^|\\.)google-analytics\\.com$",
+          "^analytics\\.google\\.com$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "gtm",
+      "name": "Google Tag Manager",
+      "category": "analytics",
+      "website": "https://tagmanager.google.com/",
+      "patterns": {
+        "scriptSrc": [
+          "googletagmanager\\.com/gtm\\.js"
+        ],
+        "html": [
+          "googletagmanager\\.com/(?:gtm\\.js|ns\\.html)\\?id=GTM-"
+        ],
+        "jsGlobals": [
+          "google_tag_manager"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "segment",
+      "name": "Segment",
+      "category": "analytics",
+      "website": "https://segment.com/",
+      "patterns": {
+        "scriptSrc": [
+          "cdn\\.segment\\.(?:com|io)/analytics\\.js/"
+        ],
+        "html": [
+          {
+            "pattern": "cdn\\.segment\\.(?:com|io)/analytics\\.js/",
+            "weight": 60
+          }
+        ],
+        "resourceHosts": [
+          "^(?:api|cdn)\\.segment\\.(?:io|com)$"
+        ],
+        "cookies": [
+          "^ajs_anonymous_id$"
+        ],
+        "jsGlobals": [
+          {
+            "pattern": "analytics",
+            "weight": 20
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "hotjar",
+      "name": "Hotjar",
+      "category": "analytics",
+      "website": "https://www.hotjar.com/",
+      "patterns": {
+        "scriptSrc": [
+          "static\\.hotjar\\.com/"
+        ],
+        "html": [
+          {
+            "pattern": "static\\.hotjar\\.com/c/hotjar-",
+            "weight": 60
+          }
+        ],
+        "jsGlobals": [
+          "hj",
+          "_hjSettings"
+        ],
+        "cookies": [
+          "^_hj"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "fullstory",
+      "name": "FullStory",
+      "category": "analytics",
+      "website": "https://www.fullstory.com/",
+      "patterns": {
+        "scriptSrc": [
+          "(?:edge|rs)\\.fullstory\\.com/s/fs\\.js"
+        ],
+        "html": [
+          {
+            "pattern": "edge\\.fullstory\\.com/s/fs\\.js",
+            "weight": 60
+          }
+        ],
+        "jsGlobals": [
+          "_fs_namespace",
+          "FS"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "pendo",
+      "name": "Pendo",
+      "category": "analytics",
+      "website": "https://www.pendo.io/",
+      "patterns": {
+        "scriptSrc": [
+          "cdn\\.(?:eu\\.)?pendo\\.io/agent/",
+          "pendo-static-\\d+\\.storage\\.googleapis\\.com"
+        ],
+        "html": [
+          {
+            "pattern": "cdn\\.(?:eu\\.)?pendo\\.io/agent/static/",
+            "weight": 60
+          }
+        ],
+        "jsGlobals": [
+          "pendo"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "mixpanel",
+      "name": "Mixpanel",
+      "category": "analytics",
+      "website": "https://mixpanel.com/",
+      "patterns": {
+        "scriptSrc": [
+          "cdn\\.mxpnl\\.com/",
+          "cdn4\\.mxpnl\\.com/"
+        ],
+        "html": [
+          {
+            "pattern": "cdn\\.mxpnl\\.com/libs/mixpanel",
+            "weight": 60
+          }
+        ],
+        "resourceHosts": [
+          "^api(?:-js|-eu)?\\.mixpanel\\.com$"
+        ],
+        "jsGlobals": [
+          "mixpanel"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "amplitude",
+      "name": "Amplitude",
+      "category": "analytics",
+      "website": "https://amplitude.com/",
+      "patterns": {
+        "scriptSrc": [
+          "cdn\\.amplitude\\.com/"
+        ],
+        "resourceHosts": [
+          "^api2?\\.amplitude\\.com$",
+          "^api\\.eu\\.amplitude\\.com$"
+        ],
+        "jsGlobals": [
+          "amplitude"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "heap",
+      "name": "Heap",
+      "category": "analytics",
+      "website": "https://www.heap.io/",
+      "patterns": {
+        "scriptSrc": [
+          "cdn\\.(?:us\\.)?heapanalytics\\.com/"
+        ],
+        "html": [
+          {
+            "pattern": "cdn\\.(?:us\\.)?heapanalytics\\.com/js/heap-",
+            "weight": 60
+          }
+        ],
+        "jsGlobals": [
+          {
+            "pattern": "heap",
+            "weight": 40
+          }
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "posthog",
+      "name": "PostHog",
+      "category": "analytics",
+      "website": "https://posthog.com/",
+      "patterns": {
+        "scriptSrc": [
+          "(?:us|eu)(?:-assets)?\\.i\\.posthog\\.com/",
+          "app\\.posthog\\.com/static/",
+          "posthog-js"
+        ],
+        "html": [
+          {
+            "pattern": "(?:us|eu)-assets\\.i\\.posthog\\.com/static/",
+            "weight": 60
+          }
+        ],
+        "resourceHosts": [
+          "^(?:us|eu)(?:-assets)?\\.i\\.posthog\\.com$",
+          "^app\\.posthog\\.com$"
+        ],
+        "jsGlobals": [
+          "posthog"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "plausible",
+      "name": "Plausible",
+      "category": "analytics",
+      "website": "https://plausible.io/",
+      "patterns": {
+        "scriptSrc": [
+          "plausible\\.io/js/"
+        ],
+        "jsGlobals": [
+          "plausible"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "fathom",
+      "name": "Fathom Analytics",
+      "category": "analytics",
+      "website": "https://usefathom.com/",
+      "patterns": {
+        "scriptSrc": [
+          "cdn\\.usefathom\\.com/"
+        ],
+        "jsGlobals": [
+          "fathom"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "goatcounter",
+      "name": "GoatCounter",
+      "category": "analytics",
+      "website": "https://www.goatcounter.com/",
+      "patterns": {
+        "scriptSrc": [
+          "gc\\.zgo\\.at/count(?:\\.v\\d+)?\\.js"
+        ],
+        "html": [
+          "data-goatcounter=[\"']https?://[^\"']+/count"
+        ],
+        "jsGlobals": [
+          "goatcounter"
+        ],
+        "resourceHosts": [
+          "\\.goatcounter\\.com$"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "clarity",
+      "name": "Microsoft Clarity",
+      "category": "analytics",
+      "website": "https://clarity.microsoft.com/",
+      "patterns": {
+        "scriptSrc": [
+          "(?:www\\.)?clarity\\.ms/tag/"
+        ],
+        "html": [
+          {
+            "pattern": "clarity\\.ms/tag/",
+            "weight": 60
+          }
+        ],
+        "jsGlobals": [
+          "clarity"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "cloudflare-insights",
+      "name": "Cloudflare Web Analytics",
+      "category": "analytics",
+      "website": "https://www.cloudflare.com/web-analytics/",
+      "patterns": {
+        "scriptSrc": [
+          "static\\.cloudflareinsights\\.com/beacon"
+        ]
+      },
+      "implies": []
+    },
+    {
+      "id": "article-feedback",
+      "name": "Article rating widget",
+      "category": "analytics",
+      "website": "",
+      "patterns": {
+        "html": [
+          {
+            "pattern": "class=\"[^\"]*\\barticle-votes\\b",
+            "weight": 60
+          },
+          {
+            "pattern": "Was this (?:article|page|doc|content|information)? ?(?:helpful|useful)\\??",
+            "weight": 50
+          },
+          {
+            "pattern": "Did this (?:answer your question|help)\\??",
+            "weight": 40
+          },
+          {
+            "pattern": "class=\"[^\"]*\\b(?:article-rating|feedback-widget|page-feedback|helpful-widget)\\b",
+            "weight": 50
+          }
+        ],
+        "dom": [
+          ".article-votes",
+          "[class*='article-rating']",
+          "[class*='Feedback'] button[aria-label*='helpful' i]"
+        ]
+      },
+      "implies": []
+    }
+  ]
+}
