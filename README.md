@@ -101,7 +101,7 @@ Rule-writing tips:
 
 ## Development
 
-Requires Node 20 or newer. No dependencies to install.
+Requires Node 22 or newer. No dependencies to install.
 
 ```sh
 npm test                                      # unit tests (node --test)
