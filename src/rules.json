@@ -2185,6 +2185,18 @@
       "implies": []
     },
     {
+      "id": "madcap-flare",
+      "name": "MadCap Flare",
+      "category": "kb",
+      "website": "https://www.madcapsoftware.com/products/flare-online/",
+      "patterns": {
+        "scriptSrc": [
+          "Scripts/MadCapAll.js"
+        ]
+      },
+      "implies": []
+    },
+    {
       "id": "article-feedback",
       "name": "Article rating widget",
       "category": "analytics",
